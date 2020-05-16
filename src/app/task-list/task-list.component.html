@@ -1,0 +1,18 @@
+<div *ngIf="tasks?.length > 0; else notasks">
+    <ul class='container'  *ngFor= "let todo of tasks">
+        <li>
+            <button *ngIf="!todo.completed_status" class="complete-btn" (click)="completedtask(todo)">Complete</button>
+            <button *ngIf="todo.completed_status" class="undo-btn" (click)="completedtask(todo)">Undo</button>
+            <input type="image" src="../../assets/img/delete.png" class="del-btn" (click)="deletetask(todo)">
+            <span class="content" [class.completed]="todo.completed_status">{{todo.task}}</span>
+            
+            <span *ngIf="todo.priority === 3 && todo.completed_status === false" class="high priority">High</span>
+            <span *ngIf="todo.priority === 2 && todo.completed_status === false" class="medium priority">Medium</span>
+            <span *ngIf="todo.priority === 1 && todo.completed_status === false" class="low priority">Low</span>
+            
+        </li>        
+    </ul>
+</div>
+<ng-template #notasks>
+    <h1> You have no tasks </h1>
+</ng-template>

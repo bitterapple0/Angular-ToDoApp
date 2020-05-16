@@ -1,0 +1,23 @@
+
+<div class="container">
+    <h3>Add Task</h3>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" autocomplete="off">
+        <div class="form_item">
+            <label class="input">Description</label>
+            <input class="input input-disp" type="text"  
+            placeholder="Task Description"  
+            name="description" 
+            [(ngModel)]="todo.task">   
+        </div>
+        <div class="form_item"> 
+            <label class="input">Priority</label>
+            <select class="input" [class.placeholder]="todo.priority === 0"[(ngModel)]="todo.priority" name="priority" required>
+                <option [ngValue]= 0 hidden disabled>Select Priority</option>
+                <option [ngValue]= 1 >Low</option>
+                <option [ngValue]= 2 >Medium</option>
+                <option [ngValue]= 3 >High</option>
+            </select>
+        </div>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+</div>

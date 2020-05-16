@@ -1,0 +1,71 @@
+h3{
+    text-align: center;
+    margin-block-start: 0.5em;
+}
+.container {
+    background-color: rgba(224, 224, 224, 0.89);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    height: 180px;
+    max-width:70%;
+}
+
+.submit{
+    background-color: rgba(212, 46, 41, 0.884);
+    border-style: none;
+    width:80px;
+    height:30px;
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: 300;
+}
+.submit:hover{
+    background-color:rgba(228, 98, 93, 0.884);
+}
+.submit:focus{
+    outline: none;
+}
+
+.form_item{
+    float: left;
+    width: 30%;
+    margin: 5px 30px;
+}
+.input{
+    display: block;
+    margin-bottom:5px;
+}
+.input-disp{
+    background-color: transparent;
+    border-style:none;
+    border-bottom: 1px solid black;
+    width: 100%
+}
+.input-disp:focus{
+    outline:none;
+    font-size:15px;
+    width:auto
+}
+
+select{
+    color: black;
+    background-color: transparent;
+    border-style: none;
+    width:90%;
+    border-bottom: 1px solid black;
+    
+}
+select:focus{
+    outline: transparent;
+}
+.placeholder{
+    color: #888;
+}
+
+option {
+    background:rgba(224, 224, 224, 0.89) ;
+    color: black
+}
+

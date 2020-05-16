@@ -1,0 +1,100 @@
+ul {
+    list-style: none;
+}
+h1{
+    text-align: center;
+    margin-block-start: 20%;
+    color: rgba(161, 161, 161, 0.603);
+}
+
+.container {
+    background-color: rgba(224, 224, 224, 0.89);
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding:0;
+    margin: 10px auto;
+    position: relative;
+    width: 95%;
+    height: 70px
+}  
+.container:hover{
+    background-color: rgba(201, 201, 201, 0.89) ;
+}
+.content{
+    position: absolute;
+    box-sizing: border-box;
+    width: 70%;
+    height: 2em;
+    left:7%;
+    top:31%;
+    margin-left: 10px;
+}
+.completed{
+    text-decoration-line: line-through ;
+    color: #888;
+}
+
+.complete-btn{
+    border-style: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: transparent;
+    color: rgb(44, 155, 44);
+    position: absolute;
+    height:100%;
+    width:70px;
+    padding-right:20px
+}
+
+.complete-btn:hover{
+    color:ivory;
+    background-color: rgb(44, 155, 44) ;
+
+}
+.undo-btn{
+    border-style: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: transparent;
+    color:  rgb(69, 71, 69);
+    position: absolute;
+    height:100%;
+    width:70px;
+    padding-right:8px
+}
+
+.undo-btn:hover{
+    color:ivory;
+    background-color: rgb(69, 71, 69) ;
+}
+.del-btn{
+    position: absolute;
+    top: 27%;
+    right: 3%;
+    width:30px;
+    height:30px;
+    opacity: 0.3;
+}
+.del-btn:hover{
+    opacity:0.6;
+    width: 35px;
+    height: 35px;
+    top:24%;
+    right:2%
+}
+.priority{
+    position: absolute;
+    top:31%;
+    right:8%
+}
+.high{
+    color: red;
+    
+}
+
+.medium {
+    color: orange;
+}
+.low{
+    color:rgb(57, 218, 57);
+}
