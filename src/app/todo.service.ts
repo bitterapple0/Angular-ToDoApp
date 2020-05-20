@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Task } from './task';
+import { Task } from './task.model';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { database } from 'firebase';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class TodoService {
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Task;
         const id = a.payload.doc.id;
-        return {id,...data};
+        return {...data, id: id};
       }))
     )
      
@@ -29,19 +29,20 @@ export class TodoService {
     return this.tasks;
   }
 
-  createTasks(task: Task) {
-    this.taskcollection.add(task)
+  createTask(task: Task) {
+    return of(this.taskcollection.add(task))
   }
 
-  updateTask(taskId) {
-    this.taskDoc = this.firestore.doc<Task>("Tasks/" + taskId.id)
-    delete taskId.id;
-    this.taskDoc.update(taskId)
+  updateTask(task: Task) {
+    this.taskDoc = this.firestore.doc<Task>("Tasks/" + task.id)
+    const task_noId= Object.assign({}, task);
+    delete task_noId.id
+    return of(this.taskDoc.update(task_noId))
   }
 
   deleteTask(taskId: string) {
     this.taskDoc = this.firestore.doc<Task>("Tasks/" + taskId)
-    this.taskDoc.delete()
+    return of(this.taskDoc.delete())
     
   }
 }
