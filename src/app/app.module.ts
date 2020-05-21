@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { TodoReducer } from './store/todo.reducer';
 import { EffectsModule } from '@ngrx/effects'
 import { TodoEffects } from './store/todo.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { TodoEffects } from './store/todo.effects';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     StoreModule.forRoot({todo: TodoReducer}),
-    EffectsModule.forRoot([TodoEffects])
+    EffectsModule.forRoot([TodoEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

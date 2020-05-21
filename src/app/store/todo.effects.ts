@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, mergeMap,switchMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { TodoService } from '../todo.service'
@@ -30,7 +30,7 @@ export class TodoEffects{
     @Effect() addTodo$ = this.actions$
     .pipe(
         ofType<AddTodoAction>(TodoActionTypes.ADD_TODO),
-        mergeMap(
+        switchMap(
             (data)=> this.todoService.createTask(data.payload)
             .pipe(
                 map(() => {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Task } from './task.model';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map,delay } from 'rxjs/operators';
 
 
 @Injectable({
@@ -26,23 +26,23 @@ export class TodoService {
   }
 
   getTasks() {
-    return this.tasks;
+    return this.tasks.pipe(delay(1000));
   }
 
   createTask(task: Task) {
-    return of(this.taskcollection.add(task))
+    return of(this.taskcollection.add(task)).pipe(delay(1000))
   }
 
   updateTask(task: Task) {
     this.taskDoc = this.firestore.doc<Task>("Tasks/" + task.id)
     const task_noId= Object.assign({}, task);
     delete task_noId.id
-    return of(this.taskDoc.update(task_noId))
+    return of(this.taskDoc.update(task_noId)).pipe(delay(1000))
   }
 
   deleteTask(taskId: string) {
     this.taskDoc = this.firestore.doc<Task>("Tasks/" + taskId)
-    return of(this.taskDoc.delete())
+    return of(this.taskDoc.delete()).pipe(delay(1000))
     
   }
 }
