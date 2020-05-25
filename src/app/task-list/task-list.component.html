@@ -1,13 +1,13 @@
-<div *ngIf="(tasks | async); else notasks">
-    <ul class='container'  *ngFor= "let todo of tasks | async">
+<div  *ngIf="(tasks | async).length; else notasks">
+    <ul class='container' *ngFor= "let todo of tasks | async">
         <li>
             <button *ngIf="!todo.completed_status" class="complete-btn" (click)="completedtask(todo)">Complete</button>
             <button *ngIf="todo.completed_status" class="undo-btn" (click)="completedtask(todo)">Undo</button>
             <input type="image" src="../../assets/img/delete.png" class="del-btn" (click)="deletetask(todo.id)">
-            <span class="content" [class.completed]="todo.completed_status">{{todo.task}}</span>
+            <p class="content" [class.completed]="todo.completed_status">{{todo.task}}</p>
             
             <span *ngIf="todo.priority === 3 && todo.completed_status === false" class="high priority">High</span>
-            <span *ngIf="todo.priority === 2 && todo.completed_status === false" class="medium priority">Medium</span>
+            <span *ngIf="todo.priority === 2 && todo.completed_status === false" class="medium priority">Med</span>
             <span *ngIf="todo.priority === 1 && todo.completed_status === false" class="low priority">Low</span>
             
         </li>        

@@ -41,9 +41,11 @@ form {
 }
 .input-disp{
     background-color: transparent;
+    box-sizing: border-box;
     border-style:none;
     border-bottom: 1px solid black;
-    width: 85%
+    width: 85%;
+    height: 18px
 }
 .input-disp:focus{
     outline:none;
@@ -54,10 +56,12 @@ form {
 select{
     color: black;
     background-color: transparent;
+    box-sizing: border-box;
     border-style: none;
-    padding-top:0.6px;
     border-bottom: 1px solid black;
-    width:85%
+    width:85%;
+    height: 18px;
+    padding: 1px 
 }
 select:focus{
     outline: transparent;

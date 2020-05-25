@@ -1,5 +1,14 @@
 ul {
     list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+li{
+    display: grid;
+    grid-template-columns: [completed] 1fr [content] 3fr [priority] 0.7fr [delete] 0.7fr [end];
+    grid-auto-flow: column;
+    height: inherit;
 }
 h1{
     text-align: center;
@@ -21,13 +30,16 @@ h1{
     background-color: rgba(201, 201, 201, 0.89) ;
 }
 .content{
-    position: absolute;
+    grid-column-start: content;
     box-sizing: border-box;
-    width: 70%;
-    height: 2em;
-    left:7%;
-    top:31%;
-    margin-left: 10px;
+    height: inherit;
+    overflow: auto;
+    margin:inherit;
+    word-wrap: break-word;
+    width:inherit
+}
+.content::-webkit-scrollbar{
+    display: none;
 }
 .completed{
     text-decoration-line: line-through ;
@@ -35,15 +47,15 @@ h1{
 }
 
 .complete-btn{
+    grid-column: completed/content;
     border-style: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: transparent;
     color: rgb(44, 155, 44);
-    position: absolute;
-    height:100%;
-    width:70px;
-    padding-right:20px
+    box-sizing: border-box;
+    width:65px;
+    margin-right:4px
 }
 
 .complete-btn:hover{
@@ -52,15 +64,15 @@ h1{
 
 }
 .undo-btn{
+    grid-column: completed/content ;
     border-style: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: transparent;
     color:  rgb(69, 71, 69);
-    position: absolute;
-    height:100%;
-    width:70px;
-    padding-right:8px
+    box-sizing: border-box;
+    width:65px;
+    margin-right:4px
 }
 
 .undo-btn:hover{
@@ -68,30 +80,26 @@ h1{
     background-color: rgb(69, 71, 69) ;
 }
 .del-btn{
-    position: absolute;
-    top: 27%;
-    right: 3%;
+    grid-column: delete/end ;
+    justify-self: center;
     width:30px;
     height:30px;
     opacity: 0.3;
+    margin:20px 0 auto
 }
 .del-btn:hover{
     opacity:0.6;
     width: 35px;
     height: 35px;
-    top:24%;
-    right:2%
 }
 .priority{
-    position: absolute;
-    top:31%;
-    right:8%
+    grid-column-start: priority/delete;
+    margin:20px 0 auto
 }
 .high{
     color: red;
     
 }
-
 .medium {
     color: orange;
 }

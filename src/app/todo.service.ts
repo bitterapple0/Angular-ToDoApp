@@ -30,14 +30,19 @@ export class TodoService {
   }
 
   createTask(task: Task) {
-    return of(this.taskcollection.add(task)).pipe(delay(1000))
+    const ID = this.firestore.createId();
+    const task_id = {id: ID, ...task} 
+    return of(this.taskcollection.doc(ID).set(task_id)).pipe(delay(1000))
   }
 
   updateTask(task: Task) {
     this.taskDoc = this.firestore.doc<Task>("Tasks/" + task.id)
-    const task_noId= Object.assign({}, task);
-    delete task_noId.id
-    return of(this.taskDoc.update(task_noId)).pipe(delay(1000))
+    //const task_noId= Object.assign({}, task);
+    //delete task_noId.id
+    return of(this.taskDoc.update({
+      completed_status: task.completed_status,
+      priority: task.priority
+    })).pipe(delay(1000))
   }
 
   deleteTask(taskId: string) {
