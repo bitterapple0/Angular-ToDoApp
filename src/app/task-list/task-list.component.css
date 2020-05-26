@@ -94,7 +94,8 @@ h1{
 }
 .priority{
     grid-column-start: priority/delete;
-    margin:20px 0 auto
+    margin:20px 0 auto;
+    text-align: center;
 }
 .high{
     color: red;
@@ -105,4 +106,24 @@ h1{
 }
 .low{
     color:rgb(57, 218, 57);
+}
+
+@media screen and (orientation: landscape) {
+    li{
+        grid-template-columns: [completed] 0.5fr [content] 4fr [priority] 0.5fr [delete] 0.5fr [end];
+        
+    }  
+}
+
+@media screen and (min-width: 400px ){
+    li{
+        grid-template-columns: [completed] 0.5fr [content] 4fr [priority] 0.5fr [delete] 0.5fr [end];
+        
+    }  
+}
+@media screen and (min-width: 1000px ){
+    li{
+        grid-template-columns: [completed] 0.5fr [content] 6fr [priority] 0.5fr [delete] 0.5fr [end];
+        
+    }  
 }
