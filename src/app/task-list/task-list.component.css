@@ -36,7 +36,9 @@ h1{
     overflow: auto;
     margin:inherit;
     word-wrap: break-word;
-    width:inherit
+    width:inherit;
+    font-size: 15px;
+    
 }
 .content::-webkit-scrollbar{
     display: none;
@@ -94,8 +96,9 @@ h1{
 }
 .priority{
     grid-column-start: priority/delete;
-    margin:20px 0 auto;
+    margin:24px 0 auto;
     text-align: center;
+    font-size: 15px;
 }
 .high{
     color: red;
@@ -117,7 +120,7 @@ h1{
 
 @media screen and (min-width: 400px ){
     li{
-        grid-template-columns: [completed] 0.5fr [content] 4fr [priority] 0.5fr [delete] 0.5fr [end];
+        grid-template-columns: [completed] 0.5fr [content] 3.5fr [priority] 0.5fr [delete] 0.5fr [end];
         
     }  
 }
