@@ -10,6 +10,11 @@ import { AppComponent } from './app.component';
 import { TaskInputComponent } from './task-input/task-input.component';
 import { TaskListComponent } from './task-list/task-list.component';
 
+import { StoreModule } from '@ngrx/store';
+import { TodoReducer } from './store/todo.reducer';
+import { EffectsModule } from '@ngrx/effects'
+import { TodoEffects } from './store/todo.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +26,10 @@ import { TaskListComponent } from './task-list/task-list.component';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    StoreModule.forRoot({todo: TodoReducer}),
+    EffectsModule.forRoot([TodoEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]
